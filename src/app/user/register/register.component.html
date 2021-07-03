@@ -7,12 +7,12 @@
       <div class="col-md-7">
         <div class="card-body">
           <p class="login-card-description">Sign into your account</p>
-          <form [formGroup]="formregister">
+          <form >
             <!--full name-->
             <div class="form-group">
               <label for="fullname">Full Name</label>
               <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Full name" formControlName="fullname">
-              <small *ngIf="formregister.get('fullname').invalid && formregister.get('fullname').touched" class="text-danger">Full name is Required</small>
+              <small  class="text-danger">Full name is Required</small>
             </div>
             <!--Date of birth-->
             <div class="form-group">
