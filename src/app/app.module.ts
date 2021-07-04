@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { TaskListComponent } from './task/task-list/task-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    TaskListComponent
   ],
     imports: [
         BrowserModule,
