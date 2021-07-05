@@ -9,6 +9,15 @@ import {environment} from "../../../environments/environment";
 export class UserService {
   constructor(private http:HttpClient) { }
   private url = environment.url+'/users'
+  private _user = new User()
+
+  get user(): User {
+    return this._user;
+  }
+
+  set user(value: User) {
+    this._user = value;
+  }
 
   public register(user:User){
     return this.http.post(this.url,user)
