@@ -4,6 +4,9 @@
 
 export const environment = {
   url:"http://localhost:3000",
+  tokenLabel:"token",
+  userLabel:"user",
+  usernameLabel:"username",
   production: false,
 
 };
