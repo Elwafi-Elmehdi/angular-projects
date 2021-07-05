@@ -3,13 +3,16 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "../model/user.model";
 import {environment} from "../../../environments/environment";
 import {LocalStorageService} from "./local-storage.service";
+import {JwtHelperService} from "@auth0/angular-jwt";
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthentificationService {
+export class AuthenticationService {
   constructor(private http:HttpClient,private storageService:LocalStorageService) { }
-  private _url = environment.url+'/users'
+  private _url = environment.url+'/users';
+  private jwtHelper = new JwtHelperService();
   get url(): string {
     return this._url;
   }
@@ -91,11 +94,28 @@ export class AuthentificationService {
     this.storageService.set(environment.usernameLabel,user._id)
     this.storageService.set(environment.userLabel, JSON.stringify(user))
   }
-  public loeaToken(){
+  public loadToken(){
     this._token = this.storageService.get(environment.tokenLabel);
   }
   public getUserFromStorage(){
     this.user = JSON.parse(<string>this.storageService.get(environment.userLabel));
     return JSON.parse(<string>this.storageService.get(environment.userLabel));
   }
+
+  public isLoggedIn(): boolean{
+    this.loadToken();
+    if(this.token !=null && this.token !== ''){
+      if(this.jwtHelper.decodeToken(this.token) != null || ''){
+        if(!this.jwtHelper.isTokenExpired(this.token)){
+          this.strorageUsername = this.jwtHelper.decodeToken(this.token)._id;
+          return true
+        }
+      }
+    }
+    else{
+      this.logout();
+      return false;
+    }
+  }
+
 }

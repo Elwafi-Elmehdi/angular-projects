@@ -6,13 +6,13 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {AuthentificationService} from "../service/authentification.service";
+import {AuthenticationService} from "../service/authentication.service";
 import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService:AuthentificationService) {}
+  constructor(private authService:AuthenticationService) {}
   public url = environment.url;
   // @ts-ignore
   intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if(url.includes(this.url+'/users/register'))
       return next.handle(httpRequest);
 
-    this.authService.loeaToken();
+    this.authService.loadToken();
     const token = this.authService.token;
     const request = httpRequest.clone({setHeaders:{Autorization:`Bearer ${token}`}});
     next.handle(request);
