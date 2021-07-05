@@ -9,15 +9,24 @@ import {LocalStorageService} from "./local-storage.service";
 })
 export class AuthentificationService {
   constructor(private http:HttpClient,private storageService:LocalStorageService) { }
-  private url = environment.url+'/users'
+  private _url = environment.url+'/users'
+  get url(): string {
+    return this._url;
+  }
+  set url(value: string) {
+    this._url = value;
+  }
+
   private _user = new User()
-  public _token = ''
+  public _token: string | null = ''
   public _strorageUsername = ''
 
-  get token(): string {
+  // @ts-ignore
+  get token(): string| null {
     return this._token;
   }
 
+  // @ts-ignore
   set token(value: string) {
     this._token = value;
   }
@@ -39,10 +48,10 @@ export class AuthentificationService {
   }
 
   public register(user:User){
-    return this.http.post(this.url,user)
+    return this.http.post(this._url,user)
   }
   public login(user:User){
-    this.http.post<any>(this.url+'/login',user).subscribe(data => {
+    this.http.post<any>(this._url+'/login',user).subscribe(data => {
       if(data._token && data.user){
         const {token,user} = data
         this.saveToken(token)
@@ -51,7 +60,7 @@ export class AuthentificationService {
     })
   }
   public logout(){
-    this.http.post(this.url+'/logout',null)
+    this.http.post(this._url+'/logout',null)
     this._token = ''
     this._strorageUsername = ''
     this.storageService.remove(environment.tokenLabel)
@@ -60,7 +69,7 @@ export class AuthentificationService {
   }
 
   public logoutAll(){
-    this.http.post(this.url+'/logoutAll',null)
+    this.http.post(this._url+'/logoutAll',null)
     this._token = ''
     this._strorageUsername = ''
     this.storageService.remove(environment.tokenLabel)
@@ -69,7 +78,7 @@ export class AuthentificationService {
   }
 
   public readProfile() {
-    return this.http.get(this.url+'/me')
+    return this.http.get(this._url+'/me')
   }
 
   private saveToken(token:string){
@@ -81,6 +90,9 @@ export class AuthentificationService {
     this.user = user
     this.storageService.set(environment.usernameLabel,user._id)
     this.storageService.set(environment.userLabel, JSON.stringify(user))
+  }
+  public loeaToken(){
+    this._token = this.storageService.get(environment.tokenLabel);
   }
   public getUserFromStorage(){
     this.user = JSON.parse(<string>this.storageService.get(environment.userLabel));
