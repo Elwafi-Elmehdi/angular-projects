@@ -6,7 +6,7 @@
         <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Name</th>
+          <th scope="col">label</th>
           <th scope="col">Description</th>
           <th scope="col">completed</th>
           <th scope="col">Action</th>
@@ -14,7 +14,6 @@
         </thead>
         <tbody>
         <tr *ngFor="let task of tasks">
-          <th scope="row">1</th>
           <td>{{task.desc}}</td>
           <td>{{task.completed}}</td>
           <td><button><i class="fas fa-trash-alt"></i></button></td>
