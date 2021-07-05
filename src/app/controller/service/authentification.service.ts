@@ -73,4 +73,8 @@ export class AuthentificationService {
     this.storageService.set(environment.usernameLabel,user._id)
     this.storageService.set(environment.userLabel, JSON.stringify(user))
   }
+  public getUserFromStorage(){
+    this.user = JSON.parse(<string>this.storageService.get(environment.userLabel));
+    return JSON.parse(<string>this.storageService.get(environment.userLabel));
+  }
 }
