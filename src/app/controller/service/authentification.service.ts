@@ -26,11 +26,11 @@ export class AuthentificationService {
     return this.http.post(this.url,user)
   }
   public login(user:User){
-    this.http.post(this.url+'/login',user).subscribe(data=> {
+    this.http.post<any>(this.url+'/login',user).subscribe(data => {
       if(data.token && data.user){
         const {token,user} = data
         this.saveToken(token)
-
+        this.saveUserAndUsername(user)
       }
     })
   }
@@ -53,6 +53,7 @@ export class AuthentificationService {
   }
   private saveUserAndUsername(user:any){
     this.strorageUsername = user._id
+    this.user = user
     this.storageService.set(environment.usernameLabel,user._id)
     this.storageService.set(environment.userLabel, JSON.stringify(user))
   }
