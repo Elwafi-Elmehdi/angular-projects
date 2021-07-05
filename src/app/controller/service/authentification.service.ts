@@ -26,7 +26,13 @@ export class AuthentificationService {
     return this.http.post(this.url,user)
   }
   public login(user:User){
-    return this.http.post(this.url+'/login',user)
+    this.http.post(this.url+'/login',user).subscribe(data=> {
+      if(data.token && data.user){
+        const {token,user} = data
+        this.saveToken(token)
+
+      }
+    })
   }
   public logout(){
     this.http.post(this.url+'/logout',null)
@@ -44,5 +50,10 @@ export class AuthentificationService {
   private saveToken(token:string){
     this.token = token;
     this.storageService.set(environment.tokenLabel,token);
+  }
+  private saveUserAndUsername(user:any){
+    this.strorageUsername = user._id
+    this.storageService.set(environment.usernameLabel,user._id)
+    this.storageService.set(environment.userLabel, JSON.stringify(user))
   }
 }
