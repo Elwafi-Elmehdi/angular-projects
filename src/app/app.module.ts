@@ -7,6 +7,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { TaskListComponent } from './task/task-list/task-list.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TaskListComponent } from './task/task-list/task-list.component';
     TaskListComponent
   ],
     imports: [
+        HttpClientModule,
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule

@@ -1,10 +1,7 @@
 export class Task {
+
   // @ts-ignore
-  name: string;
+  desc : string;
   // @ts-ignore
-  statut: boolean;
-  // @ts-ignore
-  description : string;
-  // @ts-ignore
-  complted : boolean;
+  completed : boolean;
 }

@@ -13,24 +13,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr *ngFor="let task of tasks">
           <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td><button><i class="fas fa-trash-alt"></i></button></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td><button><i class="fas fa-trash-alt"></i></button></td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
+          <td>{{task.desc}}</td>
+          <td>{{task.completed}}</td>
           <td><button><i class="fas fa-trash-alt"></i></button></td>
         </tr>
         </tbody>
