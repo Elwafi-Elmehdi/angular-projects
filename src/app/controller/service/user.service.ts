@@ -23,7 +23,7 @@ export class UserService {
     return this.http.post(this.url,user)
   }
   public login(user:User){
-    return this.http.post(this.url,user)
+    return this.http.post(this.url+'/login',user)
   }
   public readProfile() {
     return this.http.get(this.url+'/me')
