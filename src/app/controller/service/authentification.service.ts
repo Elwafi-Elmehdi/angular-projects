@@ -59,6 +59,15 @@ export class AuthentificationService {
     this.storageService.remove(environment.usernameLabel)
   }
 
+  public logoutAll(){
+    this.http.post(this.url+'/logoutAll',null)
+    this._token = ''
+    this._strorageUsername = ''
+    this.storageService.remove(environment.tokenLabel)
+    this.storageService.remove(environment.userLabel)
+    this.storageService.remove(environment.usernameLabel)
+  }
+
   public readProfile() {
     return this.http.get(this.url+'/me')
   }
