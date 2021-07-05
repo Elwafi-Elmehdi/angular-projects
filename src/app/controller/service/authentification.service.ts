@@ -11,8 +11,24 @@ export class AuthentificationService {
   constructor(private http:HttpClient,private storageService:LocalStorageService) { }
   private url = environment.url+'/users'
   private _user = new User()
-  private token:string
-  private strorageUsername:string
+  public _token = ''
+  public _strorageUsername = ''
+
+  get token(): string {
+    return this._token;
+  }
+
+  set token(value: string) {
+    this._token = value;
+  }
+
+  get strorageUsername(): string {
+    return this._strorageUsername;
+  }
+
+  set strorageUsername(value: string) {
+    this._strorageUsername = value;
+  }
 
   get user(): User {
     return this._user;
@@ -27,7 +43,7 @@ export class AuthentificationService {
   }
   public login(user:User){
     this.http.post<any>(this.url+'/login',user).subscribe(data => {
-      if(data.token && data.user){
+      if(data._token && data.user){
         const {token,user} = data
         this.saveToken(token)
         this.saveUserAndUsername(user)
@@ -36,8 +52,8 @@ export class AuthentificationService {
   }
   public logout(){
     this.http.post(this.url+'/logout',null)
-    this.token = ''
-    this.strorageUsername = ''
+    this._token = ''
+    this._strorageUsername = ''
     this.storageService.remove(environment.tokenLabel)
     this.storageService.remove(environment.userLabel)
     this.storageService.remove(environment.usernameLabel)
@@ -48,11 +64,11 @@ export class AuthentificationService {
   }
 
   private saveToken(token:string){
-    this.token = token;
+    this._token = token;
     this.storageService.set(environment.tokenLabel,token);
   }
   private saveUserAndUsername(user:any){
-    this.strorageUsername = user._id
+    this._strorageUsername = user._id
     this.user = user
     this.storageService.set(environment.usernameLabel,user._id)
     this.storageService.set(environment.userLabel, JSON.stringify(user))
