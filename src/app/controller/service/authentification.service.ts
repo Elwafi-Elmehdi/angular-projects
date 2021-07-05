@@ -40,4 +40,9 @@ export class AuthentificationService {
   public readProfile() {
     return this.http.get(this.url+'/me')
   }
+
+  private saveToken(token:string){
+    this.token = token;
+    this.storageService.set(environment.tokenLabel,token);
+  }
 }
