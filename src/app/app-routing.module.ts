@@ -4,12 +4,13 @@ import {CommonModule} from '@angular/common';
 import {TaskListComponent} from "./task/task-list/task-list.component";
 import {RegisterComponent} from "./user/register/register.component";
 import {LoginComponent} from "./user/login/login.component";
+import {AuthGuard} from "./controller/guards/Auth.guard";
 
 const routes: Routes = [
 
   {path: '', component: RegisterComponent },
   {path: 'login',component: LoginComponent},
-  {path: 'task/list', component: TaskListComponent }
+  {path: 'task/list', component: TaskListComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({
