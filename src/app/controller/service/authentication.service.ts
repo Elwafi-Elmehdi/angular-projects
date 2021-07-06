@@ -102,10 +102,9 @@ export class AuthenticationService {
     return JSON.parse(<string>this.storageService.get(environment.userLabel));
   }
 
-  // @ts-ignore
   public isLoggedIn(): boolean {
     this.loadToken();
-    if(this.token !=null && this.token !== ''){
+    if(this.token != null && this.token !== ''){
       if(this.jwtHelper.decodeToken(this.token) != null || ''){
         if(!this.jwtHelper.isTokenExpired(this.token)){
           this.strorageUsername = this.jwtHelper.decodeToken(this.token)._id;
@@ -117,6 +116,7 @@ export class AuthenticationService {
       this.logout();
       return false;
     }
+    return false;
   }
 
 }

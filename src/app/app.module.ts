@@ -9,7 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TaskListComponent } from './task/task-list/task-list.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./controller/interceptors/auth.interceptor";
-import {AuthGuard} from "./controller/guard/Auth.guard";
+import {AuthGuard} from "./controller/guards/Auth.guard";
 
 @NgModule({
   declarations: [
