@@ -10,7 +10,14 @@ const routes: Routes = [
 
   {path: '', component: RegisterComponent },
   {path: 'login',component: LoginComponent},
-  {path: 'task/list', component: TaskListComponent, canActivate:[AuthGuard] }
+  {
+    path:'task',
+    component: TaskListComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {path: 'list', component: TaskListComponent }
+    ]
+  }
 ];
 
 @NgModule({
