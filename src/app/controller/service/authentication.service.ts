@@ -102,7 +102,8 @@ export class AuthenticationService {
     return JSON.parse(<string>this.storageService.get(environment.userLabel));
   }
 
-  public isLoggedIn(): boolean{
+  // @ts-ignore
+  public isLoggedIn(): boolean {
     this.loadToken();
     if(this.token !=null && this.token !== ''){
       if(this.jwtHelper.decodeToken(this.token) != null || ''){

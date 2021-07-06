@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TaskListComponent } from './task/task-list/task-list.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./controller/interceptors/auth.interceptor";
+import {AuthGuard} from "./controller/guard/Auth.guard";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {AuthInterceptor} from "./controller/interceptors/auth.interceptor";
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
+  providers: [AuthGuard,{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
