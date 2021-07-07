@@ -13,11 +13,22 @@ export class TaskListComponent implements OnInit {
   constructor(private service:TaskService,private authSerive:AuthenticationService) { }
 
   ngOnInit(): void {
-    this.service.getTasks()
+    console.log('hehe')
+    this.service.getTasks().subscribe(data => {
+      console.log(data)
+      this.tasks = data
+    })
   }
 
-  get tasks(): Task[] {
+  public getTasks(){
+    console.log('hehe')
+  }
+
+  get tasks(): Array<Task> {
     return this.service.tasks;
+  }
+  set tasks(value: Array<Task>) {
+    this.service.tasks = value;
   }
   public logout(){
     this.authSerive.logout();

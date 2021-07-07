@@ -12,6 +12,7 @@
             <div class="form-group">
               <label for="lastname">FirstName</label>
               <input
+                [(ngModel)]="user.firstname"
                 type="text"
                 name="firstname"
                 id="firstname"
@@ -22,6 +23,7 @@
             <div class="form-group">
               <label for="firstname">LastName</label>
               <input
+                [(ngModel)]="user.lastname"
                 type="text"
                 name="lastname"
                 id="lastname"
@@ -31,11 +33,12 @@
             </div>
             <!--Date of birth-->
             <div class="form-group">
-              <label for="Date">Date of birth</label>
+              <label for="age">Age</label>
               <input
-                type="date"
-                name="Date"
-                id="Date"
+                [(ngModel)]="user.age"
+                type="number"
+                name="age"
+                id="age"
                 class="form-control"
                 placeholder="Date of birth"
               />
@@ -44,6 +47,7 @@
             <div class="form-group">
               <label for="email">Email</label>
               <input
+                [(ngModel)]="user.email"
                 type="email"
                 name="email"
                 id="email"
@@ -55,6 +59,7 @@
             <div class="form-group mb-4">
               <label for="password">Password</label>
               <input
+                [(ngModel)]="user.password"
                 type="password"
                 name="password"
                 id="password"

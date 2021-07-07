@@ -2,22 +2,25 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Task} from "../model/task.model";
+import {AuthenticationService} from "./authentication.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  constructor(private http:HttpClient ) { }
-  private _tasks = new Array<Task>()
+  constructor(private http:HttpClient,private authService:AuthenticationService) { }
+  public _tasks = new Array<Task>()
   private url = environment.url+'/tasks'
+
   public getTasks(){
-    this.http.get<Array<Task>>(this.url+'/all').subscribe(data =>{
-      this._tasks = data
-    })
+    return this.http.get<Array<Task>>(this.url);
   }
 
   get tasks(): Task[] {
+    if(this._tasks == null)
+      return new Array<Task>();
     return this._tasks;
   }
 

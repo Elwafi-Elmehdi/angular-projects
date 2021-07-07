@@ -59,7 +59,6 @@ export class AuthenticationService {
     let userVO = {...user};
     delete userVO._id;
     delete userVO.createdAt;
-
     this.http.post<any>(this._url+'/register',userVO).subscribe(data => {
       console.log(data)
       if(data.token && data.user){
