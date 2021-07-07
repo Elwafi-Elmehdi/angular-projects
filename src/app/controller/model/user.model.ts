@@ -5,4 +5,7 @@ export class User {
   email : string;
   // @ts-ignore
   password : string;
+  createdAt: Date | undefined;
+  firstname:string|undefined
+  lastname: string|undefined
 }
