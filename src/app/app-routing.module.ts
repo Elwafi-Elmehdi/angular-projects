@@ -5,6 +5,7 @@ import {TaskListComponent} from "./task/task-list/task-list.component";
 import {RegisterComponent} from "./user/register/register.component";
 import {LoginComponent} from "./user/login/login.component";
 import {AuthGuard} from "./controller/guards/Auth.guard";
+import {TaskCreatComponent} from "./task/task-creat/task-creat.component";
 
 const routes: Routes = [
 
@@ -15,7 +16,8 @@ const routes: Routes = [
     component: TaskListComponent,
     canActivate: [AuthGuard],
     children: [
-      {path: 'list', component: TaskListComponent }
+      {path: 'list', component: TaskListComponent },
+      {path: 'create', component:TaskCreatComponent}
     ]
   }
 ];

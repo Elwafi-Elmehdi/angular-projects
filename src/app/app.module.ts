@@ -10,13 +10,15 @@ import { TaskListComponent } from './task/task-list/task-list.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./controller/interceptors/auth.interceptor";
 import {AuthGuard} from "./controller/guards/Auth.guard";
+import { TaskCreatComponent } from './task/task-creat/task-creat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    TaskListComponent
+    TaskListComponent,
+    TaskCreatComponent
   ],
   imports: [
     HttpClientModule,
