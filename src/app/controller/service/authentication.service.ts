@@ -52,7 +52,7 @@ export class AuthenticationService {
   }
 
   public register(user:User){
-    return this.http.post(this._url,user)
+    this.http.post(this._url,user)
   }
   public login(user:User){
     this.http.post<any>(this._url+'/login',user).subscribe(data => {

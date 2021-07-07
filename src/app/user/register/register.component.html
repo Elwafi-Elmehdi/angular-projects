@@ -10,8 +10,13 @@
           <form >
             <!--full name-->
             <div class="form-group">
-              <label for="fullname">Full Name</label>
-              <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Full name" formControlName="fullname">
+              <label for="lastname">FirstName</label>
+              <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Firstname" formControlName="firstname">
+              <small  class="text-danger">Full name is Required</small>
+            </div>
+            <div class="form-group">
+              <label for="firstname">LastName</label>
+              <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Lastname" formControlName="lastname">
               <small  class="text-danger">Full name is Required</small>
             </div>
             <!--Date of birth-->
@@ -38,7 +43,7 @@
           </form>
 
 
-          <button name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login">Create your
+          <button name="login" id="login" class="btn btn-block login-btn mb-4" (click)="register(user)" type="button" value="Login">Create your
             account
           </button>
 
