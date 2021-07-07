@@ -6,6 +6,6 @@ export class User {
   // @ts-ignore
   password : string;
   createdAt: Date | undefined;
-  firstname:string|undefined
-  lastname: string|undefined
+  firstname:string|undefined;
+  lastname: string|undefined;
 }

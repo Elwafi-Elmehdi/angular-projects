@@ -11,21 +11,18 @@ import {AuthenticationService} from "../../controller/service/authentication.ser
 export class RegisterComponent implements OnInit {
    constructor(private authService: AuthenticationService) {
   }
-  private _user = new User();
-
   get user(): User {
-    return this._user;
+    return this.authService.user;
   }
-
   set user(value: User) {
-    this._user = value;
+    this.authService.user = value;
   }
 
   ngOnInit(): void {
   }
 
-  public register(user:User){
-    this.authService.register(user);
+  public register(){
+    this.authService.register(this.user);
   }
 
 }

@@ -12,7 +12,10 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  constructor(private http:HttpClient,private storageService:LocalStorageService,private router:Router) { }
+  constructor(private http:HttpClient,
+              private storageService:LocalStorageService,
+              private router:Router
+  ) { }
   private _url = environment.url+'/users';
   private jwtHelper = new JwtHelperService();
   get url(): string {
@@ -24,7 +27,7 @@ export class AuthenticationService {
 
   private _user = new User()
   public _token: string | null = ''
-  public _strorageUsername = ''
+  public _stroragedUsername = ''
 
   // @ts-ignore
   get token(): string| null {
@@ -36,12 +39,12 @@ export class AuthenticationService {
     this._token = value;
   }
 
-  get strorageUsername(): string {
-    return this._strorageUsername;
+  get stroragedUsername(): string {
+    return this._stroragedUsername;
   }
 
-  set strorageUsername(value: string) {
-    this._strorageUsername = value;
+  set stroragedUsername(value: string) {
+    this._stroragedUsername = value;
   }
 
   get user(): User {
@@ -53,7 +56,12 @@ export class AuthenticationService {
   }
 
   public register(user:User){
-    this.http.post<any>(this._url+'/register',user).subscribe(data => {
+    let userVO = {...user};
+    delete userVO._id;
+    delete userVO.createdAt;
+
+    this.http.post<any>(this._url+'/register',userVO).subscribe(data => {
+      console.log(data)
       if(data.token && data.user){
         const {token,user} = data
         this.saveToken(token)
@@ -68,13 +76,14 @@ export class AuthenticationService {
         const {token,user} = data
         this.saveToken(token)
         this.saveUserAndUsername(user)
+        this.router.navigate(['task/list'])
       }
     })
   }
   public logout(){
     this.http.post(this._url+'/logout',null)
     this._token = ''
-    this._strorageUsername = ''
+    this._stroragedUsername = ''
     this.storageService.remove(environment.tokenLabel)
     this.storageService.remove(environment.userLabel)
     this.storageService.remove(environment.usernameLabel)
@@ -83,7 +92,7 @@ export class AuthenticationService {
   public logoutAll(){
     this.http.post(this._url+'/logoutAll',null)
     this._token = ''
-    this._strorageUsername = ''
+    this._stroragedUsername = ''
     this.storageService.remove(environment.tokenLabel)
     this.storageService.remove(environment.userLabel)
     this.storageService.remove(environment.usernameLabel)
@@ -92,13 +101,16 @@ export class AuthenticationService {
   public readProfile() {
     return this.http.get(this._url+'/me')
   }
+  public getProfileImage(id:string){
+    return this._url+'/'+id+'/avatar'
+  }
 
   private saveToken(token:string){
     this._token = token;
     this.storageService.set(environment.tokenLabel,token);
   }
   private saveUserAndUsername(user:any){
-    this._strorageUsername = user._id
+    this._stroragedUsername = user._id
     this.user = user
     this.storageService.set(environment.usernameLabel,user._id)
     this.storageService.set(environment.userLabel, JSON.stringify(user))
@@ -116,7 +128,7 @@ export class AuthenticationService {
     if(this.token != null && this.token !== ''){
       if(this.jwtHelper.decodeToken(this.token) != null || ''){
         if(!this.jwtHelper.isTokenExpired(this.token)){
-          this.strorageUsername = this.jwtHelper.decodeToken(this.token)._id;
+          this.stroragedUsername = this.jwtHelper.decodeToken(this.token)._id;
           return true
         }
       }

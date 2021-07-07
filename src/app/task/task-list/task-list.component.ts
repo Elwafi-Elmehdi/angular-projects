@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TaskService} from "../../controller/service/task.service";
 import {Task} from "../../controller/model/task.model";
+import {AuthenticationService} from "../../controller/service/authentication.service";
 
 @Component({
   selector: 'app-task-list',
@@ -9,7 +10,7 @@ import {Task} from "../../controller/model/task.model";
 })
 export class TaskListComponent implements OnInit {
 
-  constructor(private service:TaskService) { }
+  constructor(private service:TaskService,private authSerive:AuthenticationService) { }
 
   ngOnInit(): void {
     this.service.getTasks()
@@ -17,6 +18,9 @@ export class TaskListComponent implements OnInit {
 
   get tasks(): Task[] {
     return this.service.tasks;
+  }
+  public logout(){
+    this.authSerive.logout();
   }
 
 }
