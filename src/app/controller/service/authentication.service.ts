@@ -4,6 +4,7 @@ import {User} from "../model/user.model";
 import {environment} from "../../../environments/environment";
 import {LocalStorageService} from "./local-storage.service";
 import {JwtHelperService} from "@auth0/angular-jwt";
+import {Router} from "@angular/router";
 // import {JwtHelperService} from "@auth0/angular-jwt";
 
 
@@ -11,7 +12,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  constructor(private http:HttpClient,private storageService:LocalStorageService) { }
+  constructor(private http:HttpClient,private storageService:LocalStorageService,private router:Router) { }
   private _url = environment.url+'/users';
   private jwtHelper = new JwtHelperService();
   get url(): string {
@@ -52,11 +53,18 @@ export class AuthenticationService {
   }
 
   public register(user:User){
-    this.http.post(this._url,user)
+    this.http.post<any>(this._url+'/register',user).subscribe(data => {
+      if(data.token && data.user){
+        const {token,user} = data
+        this.saveToken(token)
+        this.saveUserAndUsername(user)
+        this.router.navigate(['task/list'])
+      }
+    })
   }
   public login(user:User){
     this.http.post<any>(this._url+'/login',user).subscribe(data => {
-      if(data._token && data.user){
+      if(data.token && data.user){
         const {token,user} = data
         this.saveToken(token)
         this.saveUserAndUsername(user)
