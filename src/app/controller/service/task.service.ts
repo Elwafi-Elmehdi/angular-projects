@@ -15,9 +15,7 @@ export class TaskService {
   private url = environment.url+'/tasks';
 
   public getTasks(){
-    this.http.get(this.url).subscribe(data => {
-      console.log(data)
-    });
+    return this.http.get<Array<Task>>(this.url);
   }
 
   get tasks(): Task[] {
