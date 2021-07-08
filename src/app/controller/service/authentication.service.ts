@@ -60,7 +60,6 @@ export class AuthenticationService {
     delete userVO._id;
     delete userVO.createdAt;
     this.http.post<any>(this._url+'/register',userVO).subscribe(data => {
-      console.log(data)
       if(data.token && data.user){
         const {token,user} = data
         this.saveToken(token)
@@ -80,21 +79,27 @@ export class AuthenticationService {
     })
   }
   public logout(){
-    this.http.post(this._url+'/logout',null)
+    this.http.post(this._url+'/logout', {}).subscribe(data => {
+      console.log(data)
+    })
     this._token = ''
     this._stroragedUsername = ''
     this.storageService.remove(environment.tokenLabel)
     this.storageService.remove(environment.userLabel)
     this.storageService.remove(environment.usernameLabel)
+    this.router.navigate(['/login'])
   }
 
   public logoutAll(){
-    this.http.post(this._url+'/logoutAll',null)
+    this.http.post(this._url+'/logoutAll',{}).subscribe(data => {
+      console.log(data)
+    })
     this._token = ''
     this._stroragedUsername = ''
     this.storageService.remove(environment.tokenLabel)
     this.storageService.remove(environment.userLabel)
     this.storageService.remove(environment.usernameLabel)
+    this.router.navigate(['/login'])
   }
 
   public readProfile() {

@@ -14,7 +14,6 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private authService:AuthenticationService) {}
   public url = environment.url;
-  // @ts-ignore
   intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const url = httpRequest.url;
 
@@ -25,7 +24,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
     this.authService.loadToken();
     const token = this.authService.token;
-    const request = httpRequest.clone({setHeaders:{Autorization:`Bearer ${token}`}});
-    next.handle(request);
+    console.log(token)
+    const request = httpRequest.clone({setHeaders:{Authorization:`Bearer ${token}`}});
+    return next.handle(request);
   }
 }

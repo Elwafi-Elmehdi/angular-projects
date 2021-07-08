@@ -27,7 +27,7 @@ import { TaskCreatComponent } from './task/task-creat/task-creat.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [AuthGuard,{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
+  providers: [AuthGuard,AuthInterceptor,{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

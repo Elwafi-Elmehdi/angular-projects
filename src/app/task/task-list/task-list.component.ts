@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TaskService} from "../../controller/service/task.service";
 import {Task} from "../../controller/model/task.model";
 import {AuthenticationService} from "../../controller/service/authentication.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-task-list',
@@ -14,14 +15,7 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('hehe')
-    this.service.getTasks().subscribe(data => {
-      console.log(data)
-      this.tasks = data
-    })
-  }
-
-  public getTasks(){
-    console.log('hehe')
+    this.service.getTasks();
   }
 
   get tasks(): Array<Task> {
@@ -31,7 +25,7 @@ export class TaskListComponent implements OnInit {
     this.service.tasks = value;
   }
   public logout(){
-    this.authSerive.logout();
+    this.authSerive.logoutAll();
   }
 
 }

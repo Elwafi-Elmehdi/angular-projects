@@ -11,11 +11,13 @@ import {Observable} from "rxjs";
 export class TaskService {
 
   constructor(private http:HttpClient,private authService:AuthenticationService) { }
-  public _tasks = new Array<Task>()
-  private url = environment.url+'/tasks'
+  public _tasks = new Array<Task>();
+  private url = environment.url+'/tasks';
 
   public getTasks(){
-    return this.http.get<Array<Task>>(this.url);
+    this.http.get(this.url).subscribe(data => {
+      console.log(data)
+    });
   }
 
   get tasks(): Task[] {
