@@ -24,8 +24,10 @@ export class TaskCreatComponent implements OnInit {
   public createTask(task:Task){
     this.service.saveTask(task).subscribe(data => {
       console.log(data)
+      this.service.tasks.push(task);
+      this.task = new Task();
     })
-    this.task = new Task();
+
   }
 
 }
