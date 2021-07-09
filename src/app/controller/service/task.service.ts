@@ -12,6 +12,18 @@ export class TaskService {
 
   constructor(private http:HttpClient,private authService:AuthenticationService) { }
   public _tasks = new Array<Task>();
+  private _task = new Task();
+  get task(): Task {
+    if(this._task == null){
+      return new Task();
+    }
+    return this._task;
+  }
+
+  set task(value: Task) {
+    this._task = value;
+  }
+
   private url = environment.url+'/tasks';
 
   public getTasks(){
@@ -26,5 +38,9 @@ export class TaskService {
 
   set tasks(value: Task[]) {
     this._tasks = value;
+  }
+
+  public saveTask(task:Task){
+    return this.http.post<Task>(this.url,task);
   }
 }

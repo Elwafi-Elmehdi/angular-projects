@@ -8,12 +8,13 @@
       <!--Desc string-->
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Desc...</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea [(ngModel)]="task.desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
       <!--completed boolean-->
       <label>Completed</label><br>
-      <input type="checkbox" id="yes" name="vehicle1" value="yes">
-      <input type="checkbox" id="No" name="vehicle1" value="no">
+      <input [(ngModel)]="task.completed" type="checkbox" id="yes" name="vehicle1" value="true">
+      <input [(ngModel)]="task.completed" type="checkbox" id="No" name="vehicle1" value="false">
+      <button (click)="createTask(task)" class="btn btn-primary">Save</button>
     </div>
   </div>
 </div>
