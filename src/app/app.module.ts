@@ -11,6 +11,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./controller/interceptors/auth.interceptor";
 import {AuthGuard} from "./controller/guards/Auth.guard";
 import { TaskCreatComponent } from './task/task-creat/task-creat.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TaskCreatComponent } from './task/task-creat/task-creat.component';
     LoginComponent,
     RegisterComponent,
     TaskListComponent,
-    TaskCreatComponent
+    TaskCreatComponent,
+    NavbarComponent
   ],
   imports: [
     HttpClientModule,

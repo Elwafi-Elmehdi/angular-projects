@@ -13,13 +13,14 @@
         </thead>
         <tbody>
         <tr *ngFor="let task of tasks">
+          <td>{{task.label}}</td>
           <td>{{task.desc}}</td>
           <td>{{task.completed}}</td>
           <td><button><i class="fa fa-trash-alt-2px"></i></button></td>
         </tr>
         </tbody>
       </table>
-      <button (click)="logout()">Amine</button>
+      <button (click)="logout()">Logout</button>
     </div>
   </div>
 </div>

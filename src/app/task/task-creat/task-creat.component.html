@@ -3,7 +3,7 @@
     <div class="card-body">
       <h5 class="card-title">Create New Task</h5>
       <!--Label string-->
-      <input class="form-control form-control-lg" type="text" placeholder="Label"
+      <input [(ngModel)]="task.label" class="form-control form-control-lg" type="text" placeholder="Label"
              aria-label=".form-control-lg example">
       <!--Desc string-->
       <div class="mb-3">
