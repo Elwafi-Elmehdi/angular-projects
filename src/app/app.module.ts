@@ -12,6 +12,7 @@ import {AuthInterceptor} from "./controller/interceptors/auth.interceptor";
 import {AuthGuard} from "./controller/guards/Auth.guard";
 import { TaskCreatComponent } from './task/task-creat/task-creat.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProfilComponent } from './user/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     RegisterComponent,
     TaskListComponent,
     TaskCreatComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProfilComponent
   ],
   imports: [
     HttpClientModule,

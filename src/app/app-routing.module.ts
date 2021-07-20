@@ -6,11 +6,13 @@ import {RegisterComponent} from "./user/register/register.component";
 import {LoginComponent} from "./user/login/login.component";
 import {AuthGuard} from "./controller/guards/Auth.guard";
 import {TaskCreatComponent} from "./task/task-creat/task-creat.component";
+import {ProfilComponent} from "./user/profil/profil.component";
 
 const routes: Routes = [
 
   {path: '', component: RegisterComponent },
   {path: 'login',component: LoginComponent},
+  {path:'profil',component:ProfilComponent},
   {
     path:'task',
     component: TaskListComponent,
