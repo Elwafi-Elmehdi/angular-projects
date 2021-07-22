@@ -77,5 +77,10 @@ body {
 .login-card-footer-nav a {
   font-size: 14px;
   color: #919aa3; }
+main {
+  margin: 0 auto;
+  width: 80vw;
+}
+
 
 /*# sourceMappingURL=login.css.map */

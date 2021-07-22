@@ -1,20 +1,24 @@
 <div class="container">
   <div class="card" >
+    <div class="card-header">New Task?</div>
     <div class="card-body">
       <h5 class="card-title">Create New Task</h5>
       <!--Label string-->
+      <label for="">Label</label>
       <input [(ngModel)]="task.label" class="form-control form-control-lg" type="text" placeholder="Label"
              aria-label=".form-control-lg example">
       <!--Desc string-->
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Desc...</label>
+        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
         <textarea [(ngModel)]="task.desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
       <!--completed boolean-->
       <label>Completed</label><br>
       <input [(ngModel)]="task.completed" type="checkbox" id="yes" name="vehicle1" value="true">
       <input [(ngModel)]="task.completed" type="checkbox" id="No" name="vehicle1" value="false">
-      <button (click)="createTask(task)" class="btn btn-primary">Save</button>
+      <div class="card-footer">
+        <button (click)="createTask(task)" class="btn btn-primary btn-block">Save</button>
+      </div>
     </div>
   </div>
 </div>
