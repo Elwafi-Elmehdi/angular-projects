@@ -13,6 +13,7 @@ import {AuthGuard} from "./controller/guards/Auth.guard";
 import { TaskCreatComponent } from './task/task-creat/task-creat.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilComponent } from './user/profil/profil.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProfilComponent } from './user/profil/profil.component';
     TaskListComponent,
     TaskCreatComponent,
     NavbarComponent,
-    ProfilComponent
+    ProfilComponent,
+    FooterComponent
   ],
   imports: [
     HttpClientModule,
