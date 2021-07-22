@@ -9,4 +9,5 @@ export class User {
   bio: string| undefined;
   firstname:string|undefined;
   lastname: string|undefined;
+  profileImageURL:string|undefined;
 }

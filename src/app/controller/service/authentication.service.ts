@@ -116,6 +116,7 @@ export class AuthenticationService {
   private saveUserAndUsername(user:any){
     this._stroragedUsername = user._id
     this.user = user
+    this.user.profileImageURL = this._url+'/'+user._id+'/avatar'
     this.storageService.set(environment.usernameLabel,user._id)
     this.storageService.set(environment.userLabel, JSON.stringify(user))
   }
