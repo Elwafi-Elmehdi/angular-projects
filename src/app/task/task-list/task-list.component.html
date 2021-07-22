@@ -1,5 +1,5 @@
 <navbar></navbar>
-<div class="row" style="margin-top: 20px">
+<div class="row" style="margin: 20px auto">
   <div class="card container col-md-8">
     <div class="card-body ">
       <div class="container">
@@ -13,11 +13,18 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let task of tasks">
+          <tr *ngFor="let task of tasks;index as i">
             <td>{{task.label}}</td>
             <td>{{task.desc}}</td>
             <td>{{task.completed}}</td>
-            <td><button><i class="fa fa-trash-alt-2px"></i></button></td>
+            <td>
+              <button class="btn btn-sm btn-danger" (click)="delete(i)">
+                <i class="fa fa-trash"></i>
+              </button>
+              <button class="btn btn-sm btn-secondary" (click)="edit(i)">
+                <i class="fa fa-pencil-square"></i>
+              </button>
+            </td>
           </tr>
           </tbody>
         </table>

@@ -43,4 +43,7 @@ export class TaskService {
   public saveTask(task:Task){
     return this.http.post<Task>(this.url,task);
   }
+  public deleteTask(id: string | undefined){
+    return this.http.delete(environment.url+'/task/'+id);
+  }
 }

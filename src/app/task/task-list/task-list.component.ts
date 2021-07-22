@@ -31,4 +31,15 @@ export class TaskListComponent implements OnInit {
     this.authSerive.logoutAll();
   }
 
+  edit(i: number) {
+    const task = this.tasks[i];
+  }
+
+  delete(i: number) {
+    const task = this.tasks[i];
+    this.service.deleteTask(task._id).subscribe(data =>{
+      console.log('mzn');
+    this.tasks.splice(i,1);
+    });
+  }
 }
