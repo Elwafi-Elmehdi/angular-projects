@@ -128,6 +128,13 @@ export class AuthenticationService {
     return JSON.parse(<string>this.storageService.get(environment.userLabel));
   }
 
+  public deleteUser(){
+    const user = this.getUserFromStorage();
+    this.http.delete(this.url+'/me').subscribe(data=>{
+      this.logout();
+    })
+  }
+
   public isLoggedIn(): boolean {
     this.loadToken();
     if(this.token != null && this.token !== ''){

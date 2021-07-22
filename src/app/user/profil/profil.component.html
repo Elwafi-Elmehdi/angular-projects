@@ -98,9 +98,13 @@
           <div class="card mb-3">
             <div class="card-body">
               <div class="px-xl-3">
-                <button class="btn btn-block btn-secondary" (click)="logout()">
+                <button class="btn btn-block btn-secondary account-btns" (click)="logout()">
                   <i class="fa fa-sign-out"></i>
-                  <span>Logout</span>
+                  <span> Logout</span>
+                </button>
+                <button class="btn  btn-danger account-btns" (click)="deleteAccount()">
+                  <i class="fa fas fa-user-times"></i>
+                  <span> Delete Account</span>
                 </button>
               </div>
             </div>

@@ -31,4 +31,7 @@ export class ProfilComponent implements OnInit {
     console.log(this.user)
   }
 
+  deleteAccount() {
+    this.authService.deleteUser();
+  }
 }
