@@ -16,7 +16,7 @@
           <tr *ngFor="let task of tasks;index as i">
             <td>{{task.label}}</td>
             <td>{{task.desc}}</td>
-            <td>{{task.completed}}</td>
+            <td>{{task.completed === true ? "Completed" : "Waiting"}}</td>
             <td>
               <button class="btn btn-sm btn-danger" (click)="delete(i)">
                 <i class="fa fa-trash"></i>

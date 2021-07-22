@@ -12,9 +12,8 @@
         <textarea [(ngModel)]="task.desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
       <!--completed boolean-->
-      <label>Completed</label><br>
-      <input [(ngModel)]="task.completed" type="checkbox" id="yes" name="vehicle1" value="true">
-      <input [(ngModel)]="task.completed" type="checkbox" id="No" name="vehicle1" value="false">
+      <input type="radio" name="food" [(ngModel)]="task.completed" [value]="true"><span>Completed</span>
+      <input type="radio" name="food" [(ngModel)]="task.completed" [value]="false"><span>Waiting</span>
       <div class="card-footer">
         <button (click)="createTask(task)" class="btn btn-primary btn-block">Save</button>
       </div>
