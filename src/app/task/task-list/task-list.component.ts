@@ -32,7 +32,7 @@ export class TaskListComponent implements OnInit {
   }
 
   edit(i: number) {
-    const task = this.tasks[i];
+    this.service.task = this.tasks[i];
   }
 
   delete(i: number) {

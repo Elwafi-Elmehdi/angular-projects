@@ -14,6 +14,7 @@ import { TaskCreatComponent } from './task/task-creat/task-creat.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfilComponent } from './user/profil/profil.component';
 import { FooterComponent } from './footer/footer.component';
+import {LoggedInGuard} from "./controller/guards/logged-in-guard.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [AuthGuard,AuthInterceptor,{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
+  providers: [AuthGuard,LoggedInGuard,AuthInterceptor,{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

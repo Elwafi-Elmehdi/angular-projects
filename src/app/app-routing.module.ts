@@ -7,11 +7,12 @@ import {LoginComponent} from "./user/login/login.component";
 import {AuthGuard} from "./controller/guards/Auth.guard";
 import {TaskCreatComponent} from "./task/task-creat/task-creat.component";
 import {ProfilComponent} from "./user/profil/profil.component";
+import {LoggedInGuard} from "./controller/guards/logged-in-guard.service";
 
 const routes: Routes = [
 
-  {path: '', component: LoginComponent },
-  {path: 'login',component: LoginComponent},
+  {path: '', component: LoginComponent,canActivate:[LoggedInGuard]},
+  {path: 'login',component: LoginComponent,canActivate:[LoggedInGuard]},
   {path:'profil',component:ProfilComponent,canActivate: [AuthGuard],},
   {
     path:'task',
