@@ -1,4 +1,4 @@
-<div class="container">
+
   <div class="card" >
     <div class="card-header">New Task?</div>
     <div class="card-body">
@@ -14,9 +14,9 @@
       <!--completed boolean-->
       <input type="radio" name="food" [(ngModel)]="task.completed" [value]="true"><span>Completed</span>
       <input type="radio" name="food" [(ngModel)]="task.completed" [value]="false"><span>Waiting</span>
-      <div class="card-footer">
-        <button (click)="createTask(task)" class="btn btn-primary btn-block">Save</button>
-      </div>
+
+    </div>
+    <div class="card-footer">
+      <button (click)="createTask(task)" class="btn btn-dark ">Save</button>
     </div>
   </div>
-</div>

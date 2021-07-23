@@ -10,7 +10,7 @@ import {ProfilComponent} from "./user/profil/profil.component";
 
 const routes: Routes = [
 
-  {path: '', component: RegisterComponent },
+  {path: '', component: LoginComponent },
   {path: 'login',component: LoginComponent},
   {path:'profil',component:ProfilComponent,canActivate: [AuthGuard],},
   {
