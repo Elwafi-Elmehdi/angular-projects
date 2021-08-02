@@ -19,4 +19,15 @@ footer {
   margin: 0 10px;
 }
 
+.my-links {
+  float: right;
+  display: inline;
+}
+.my-links * {
+
+  margin: 0 6px;
+}
+
+
+
 
