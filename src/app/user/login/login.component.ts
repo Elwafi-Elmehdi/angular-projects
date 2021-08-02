@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from "../../controller/service/authentication.service";
 import {User} from "../../controller/model/user.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import {User} from "../../controller/model/user.model";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private service:AuthenticationService) { }
+  constructor(private service:AuthenticationService,private router:Router) { }
 
   get user(): User {
     return this.service.user;
@@ -19,6 +20,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.service.getUserFromStorage() !== null){
+      this.router.navigate(['/task/list'])
+    }
   }
 
 }
