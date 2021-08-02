@@ -15,7 +15,7 @@
           <tbody>
           <tr *ngFor="let task of tasks;index as i">
             <td>{{task.label}}</td>
-            <td>{{task.desc}}</td>
+            <td>{{task.desc.slice(0,10)}}</td>
             <td>{{task.completed === true ? "Completed" : "Waiting"}}</td>
             <td>
               <button class="btn btn-sm btn-danger" (click)="delete(i)">

@@ -12,7 +12,7 @@ import {LoggedInGuard} from "./controller/guards/logged-in-guard.service";
 const routes: Routes = [
 
   {path: '', component: LoginComponent},
-  {path: 'login',component: LoginComponent,canActivate:[LoggedInGuard]},
+  {path: 'login',component: LoginComponent},
   {path:'profil',component:ProfilComponent,canActivate: [AuthGuard],},
   {
     path:'task',
