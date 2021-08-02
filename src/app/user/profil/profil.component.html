@@ -42,7 +42,7 @@
                     </div>
                     <div class="text-center text-sm-right">
                       <span class="badge badge-secondary">user</span>
-                      <div class="text-muted"><small>Joined {{user.createdAt}}</small></div>
+                      <div class="text-muted"><small>Joined {{user.createdAt && user.createdAt.toString().slice(0,10) }}</small></div>
                     </div>
                   </div>
                 </div>
