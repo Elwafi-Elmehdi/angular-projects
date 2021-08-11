@@ -58,13 +58,13 @@
                             <div class="col">
                               <div class="form-group">
                                 <label>First Name</label>
-                                <input class="form-control" type="text" name="name" placeholder="John Smith" [value]="user.firstname">
+                                <input class="form-control" type="text" name="name" placeholder="John Smith" [(ngModel)]="user.firstname" [value]="user.firstname">
                               </div>
                             </div>
                             <div class="col">
                               <div class="form-group">
                                 <label>Last Name</label>
-                                <input class="form-control" type="text" name="username" placeholder="johnny.s" [value]="user.lastname">
+                                <input class="form-control" type="text" name="username" placeholder="username" [(ngModel)]="user.lastname" [value]="user.lastname">
                               </div>
                             </div>
                           </div>
@@ -72,7 +72,7 @@
                             <div class="col">
                               <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" type="email" [value]="user.email">
+                                <input class="form-control" type="email" [value]="user.email" [(ngModel)]="user.email">
                               </div>
                             </div>
                           </div>
@@ -80,7 +80,7 @@
                             <div class="col mb-3">
                               <div class="form-group">
                                 <label>About</label>
-                                <textarea class="form-control" rows="5" placeholder="My Bio" [value]="user.bio ? undefined: ''"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="My Bio" [(ngModel)]="user.bio" [value]="user.bio ? undefined: ''"></textarea>
                               </div>
                             </div>
                           </div>
@@ -88,11 +88,10 @@
                       </div>
                       <div class="row">
                         <div class="col d-flex justify-content-end">
-                          <button class="btn btn-primary" type="submit">Save Changes</button>
+                          <button class="btn btn-primary" type="submit" (click)="updateUser()">Save Changes</button>
                         </div>
                       </div>
                     </form>
-
                   </div>
                 </div>
               </div>

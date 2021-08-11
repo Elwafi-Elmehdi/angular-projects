@@ -34,4 +34,10 @@ export class ProfilComponent implements OnInit {
   deleteAccount() {
     this.authService.deleteUser();
   }
+
+  updateUser() {
+    this.authService.updateUser(this.user).subscribe((data)=> {
+      console.log(data);
+    })
+  }
 }

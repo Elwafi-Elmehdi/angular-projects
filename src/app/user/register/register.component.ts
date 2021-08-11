@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
    constructor(private authService: AuthenticationService,private router:Router) {
   }
   get user(): User {
+    if(this.authService.user == null)
+      return new User();
     return this.authService.user;
   }
   set user(value: User) {
