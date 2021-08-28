@@ -5,12 +5,3 @@
 .flex-lg-nowrap {
   margin: 5px 0;
 }
-body {
-  height: 100vh;
-}
-
-#profil-pic {
-  margin: 0 2rem;
-  width: 8.7rem;
-  height: 8.7rem;
-}

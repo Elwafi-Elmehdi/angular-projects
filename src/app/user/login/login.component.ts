@@ -13,12 +13,8 @@ export class LoginComponent implements OnInit {
   constructor(private service:AuthenticationService,private router:Router) { }
 
   get user(): User {
-    if(this.service.user === null){
-      return new User();
-    }
     return this.service.user;
   }
-
   public login(user:User){
     this.service.login(user);
   }

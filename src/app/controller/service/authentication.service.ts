@@ -69,7 +69,6 @@ export class AuthenticationService {
     })
   }
   public login(user:User){
-    console.log(user)
     this.http.post<any>(this._url+'/login',user).subscribe(data => {
       if(data.token && data.user){
         const {token,user} = data
@@ -135,9 +134,7 @@ export class AuthenticationService {
       this.logout();
     })
   }
-  public updateUser(user:User) {
-    return this.http.patch(environment.url+"/user/"+user._id,user);
-  }
+
   public isLoggedIn(): boolean {
     this.loadToken();
     if(this.token != null && this.token !== ''){

@@ -16,8 +16,8 @@
   -webkit-transition: all 0.3s linear;
 }
 .container-fluid *, .container-fluid > a{
-  color: white;
+  color: antiquewhite;
 }
-.nav-item  a:hover{
-  background-color: inherit;
+.nav-item > a:hover{
+
 }
