@@ -15,3 +15,9 @@
   transition: all 0.3s linear;
   -webkit-transition: all 0.3s linear;
 }
+.container-fluid *, .container-fluid > a{
+  color: antiquewhite;
+}
+.nav-item > a:hover{
+
+}

@@ -56,9 +56,9 @@
         │   ├── register.component.html
         │   └── register.component.ts
         ├── assets
-        │   └── images
-        │   ├── login.jpg
-        │   └── register.jpg
+            └── images
+            ├── login.jpg
+            └── register.jpg
 
 ## Collaborators
 
