@@ -61,6 +61,8 @@
             └── register.jpg
 
 ## Screenshots
+![](./src/assets/images/01.png)
+![](./src/assets/images/02.png)
 
 
 
