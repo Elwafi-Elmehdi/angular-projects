@@ -12,6 +12,7 @@ const routes: Routes = [
 
   {path: '', component: LoginComponent },
   {path: 'login',component: LoginComponent},
+  {path: 'register',component: RegisterComponent},
   {path:'profil',component:ProfilComponent,canActivate: [AuthGuard],},
   {
     path:'task',

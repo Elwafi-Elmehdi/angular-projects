@@ -1,4 +1,4 @@
-# Mean Stack App (Front End)
+# Taskify App
 
 **A Simple Task Manager**
 
@@ -59,6 +59,8 @@
             └── images
             ├── login.jpg
             └── register.jpg
+
+## Screenshots
 
 ## Collaborators
 
