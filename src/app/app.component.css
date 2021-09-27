@@ -83,5 +83,8 @@ main {
   position: relative;
 }
 
-
+router-outlet
+{
+  background-color: #b0acb0;
+}
 /*# sourceMappingURL=login.css.map */
